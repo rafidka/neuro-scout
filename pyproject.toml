@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "neuroscout"
+version = "0.1.0"
+description = "An LLM-powered tool to analyze NeurIPS paper abstracts and help researchers efficiently discover relevant topics for poster sessions."
+authors = ["Rafid"]
+license = "GPL-3.0-only"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
