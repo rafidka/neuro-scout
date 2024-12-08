@@ -36,6 +36,12 @@ poetry run neuroscout
 
 ## Usage
 
+> **Note**: Currently, `neuroscout` makes use of OpenAI models in the evaluation process.
+> As such, you would need to have an OpenAI API key set in the `OPENAI_API_KEY`
+> environment variable. Refer to the ["Create and export an API
+> key"](https://platform.openai.com/docs/quickstart#create-and-export-an-api-key) section
+> of OpenAI's developer guide for more information.
+
 After installation, you can use `neuroscout` via its command-line interface:
 
 ```
