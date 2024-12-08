@@ -1,5 +1,6 @@
 # Python imports
 from pathlib import Path
+from random import sample
 import argparse
 import asyncio
 
@@ -10,20 +11,19 @@ from neuroscout.utils import PaperEvaluator
 
 def read_file(file_path: str):
     """Reads the content of a file."""
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        return f"Error: The file '{file_path}' does not exist."
-    except Exception as e:
-        return f"Error: Unable to read file '{file_path}'. Reason: {e}"
+    with open(file_path, "r", encoding="utf-8") as file:
+        return file.read()
 
 
 async def _main():
     parser = argparse.ArgumentParser(
         description="Read and combine content from multiple files."
     )
-
+    parser.add_argument(
+        "--i-am-feeling-lucky",
+        action="store_true",
+        help="If set, 10 random papers will be evaluated.",
+    )
     parser.add_argument(
         "--company-name-file",
         type=Path,
@@ -64,7 +64,10 @@ async def _main():
         department_description=department_description,
     )
 
-    urls = NEURIPS_2024_PAPER_URLS
+    if args.i_am_feeling_lucky:
+        urls = sample(NEURIPS_2024_PAPER_URLS, 10)
+    else:
+        urls = NEURIPS_2024_PAPER_URLS
     tasks = [evaluator.evaluate_paper(url) for url in urls]
     await asyncio.gather(*tasks)
 
