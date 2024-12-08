@@ -19,10 +19,11 @@ def read_file(file_path: str):
         return f"Error: Unable to read file '{file_path}'. Reason: {e}"
 
 
-def main():
+async def _main():
     parser = argparse.ArgumentParser(
         description="Read and combine content from multiple files."
     )
+
     parser.add_argument(
         "--company-name-file",
         type=Path,
@@ -65,7 +66,11 @@ def main():
 
     urls = NEURIPS_2024_PAPER_URLS
     tasks = [evaluator.evaluate_paper(url) for url in urls]
-    asyncio.gather(*tasks)
+    await asyncio.gather(*tasks)
+
+
+def main():
+    asyncio.run(_main())
 
 
 if __name__ == "__main__":
