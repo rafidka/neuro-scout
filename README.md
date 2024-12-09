@@ -16,10 +16,10 @@ relevant to their interests.
 You can install `neuroscout` using `pip` or `pipx`, e.g.
 
 ```
-pip install git+https://github.com/rafidka/neuroscout.git # Using pip
+pip install git+https://github.com/rafidka/neuroscout.git
 ```
 
-You can also clone the repository locally, which enables you to apply make tweaks to the
+You can also clone the repository locally, which enables you to make tweaks to the
 evaluation process to suit your needs:
 
 ```bash
